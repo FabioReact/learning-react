@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom"
+import Footer from "./components/Footer"
+import LifecycleClass from "./pages/LifecycleClass"
+import LifecycleHooks from "./pages/LifecycleHooks"
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <nav>
+        <ul>
+          <li>
+            <NavLink to="/lifecycle-class" activeClassName="text-blue-600">Compteur (Classe)</NavLink>
+          </li>
+          <li>
+            <NavLink to="/lifecycle-hooks" activeClassName="text-blue-600">Compteur (Hooks)</NavLink>
+          </li>
+        </ul>
+      </nav>
+      <Switch>
+        <Route path="/lifecycle-class" component={LifecycleClass} />
+        <Route path="/lifecycle-hooks" component={LifecycleHooks} />
+      </Switch>
+      <Footer framework="React" />
+    </Router>
   );
 }
 
